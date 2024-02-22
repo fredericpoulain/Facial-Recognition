@@ -1,11 +1,11 @@
-**# Application de reconnaissance faciale**
+# **Application de reconnaissance faciale**
 
 Ce projet est une application web qui permet de s’identifier à l’aide de son visage et de son mot de passe. Il utilise
 une technique de reconnaissance faciale basée sur les descripteurs, qui sont des tableaux de 128 nombres flottants
 représentant les caractéristiques du visage. Il utilise également un système de sécurité par token de session, qui
 garantit l’authenticité de l’utilisateur.
 
-**## Technologies utilisées**
+## **Technologies utilisées**
 
 * PHP
 * Symfony
