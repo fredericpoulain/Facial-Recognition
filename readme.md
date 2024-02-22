@@ -6,6 +6,8 @@ descriptors, which are arrays of 128 floating-point numbers representing facial 
 **No image files are stored on the server**, only the image descriptor.
 Additionally, it utilizes a session token security system, ensuring user authenticity.
 
+![screenshot](screenshot.jpg)
+
 ## **Technologies Used**
 
 * PHP
