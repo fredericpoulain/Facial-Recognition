@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('js/register.js') }}" defer></script>
+        <script src="{{ asset('js/face-api.min.js') }}" defer></script>
+    {% endblock %}
+{% block body %}
+    <h1>Inscription</h1>
+    <div class="alert d-none text-center" ></div>
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+    <div class="position-relative mb-4">
+        <label for="validationTooltipEmail" class="form-label">Adresse email *</label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="validationTooltipEmailPrepend"><i class="fa-solid fa-envelope"></i></span>
+            {{ form_widget(registrationForm.email, {'attr': {'class': 'email form-control', 'placeholder': 'exemple@domaine.com'}}) }}
+            <div class="invalid-tooltip">
+                Veuillez entrer une adresse email valide
+            </div>
+        </div>
+    </div>
+    <div class="position-relative mb-4">
+        <label for="validationTooltipUserName" class="form-label">Nom d'utilisateur * </label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="validationTooltipUserNamePrepend"><i class="fa-solid fa-user"></i></span>
+            {{ form_widget(registrationForm.userName, {'attr': {'class': 'userName form-control', 'placeholder': 'Exemple : Fred'}}) }}
+            <div class="invalid-tooltip">
+                Veuillez entrer un nom d'utilisateur
+            </div>
+        </div>
+    </div>
+    <div class="position-relative mb-4">
+        <label for="validationTooltipPass" class="form-label">Mot de passe * </label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="validationTooltipPassPrepend"><i class="fa-solid fa-lock"></i></span>
+            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'password form-control'}}) }}
+            <div class="invalid-tooltip">
+                Veuillez entrer un mot de passe (entre 8 et 128 caractères)
+            </div>
+        </div>
+    </div>
+    <div class="position-relative mb-4">
+        <label for="validationTooltipFile" class="form-label">Choisissez votre photo * </label>
+        <div class="input-group has-validation">
+            <input class="form-control image" type="file" id="formFile">
+            <div class="invalid-tooltip">
+                Veuillez sélectionner votre photo
+            </div>
+        </div>
+    </div>
+
+    {{ form_row(registrationForm.agreeTerms) }}
+
+
+
+{#    <div class="form-check">#}
+{#        {{ form_label(registrationForm.agreeTerms, 'Agree to terms and conditions', {'label_attr': {'class': 'form-check-label', 'for': 'invalidCheck'}}) }}#}
+{#        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'check form-check-input', 'id' : 'invalidCheck', 'value':''}, 'label' : 'Acceptez'}) }}#}
+{#        <div class="invalid-feedback">#}
+{#            You must agree before submitting.#}
+{#        </div>#}
+{#    </div>#}
+
+
+
+    <div class="legend my-4"><span>* champs obligatoires</span></div>
+    <button type="submit" class="btnRegister btn btn-primary">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+
+
+{% endblock %}

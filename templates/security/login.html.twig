@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('js/login.js') }}" defer></script>
+        <script src="{{ asset('js/face-api.min.js') }}" defer></script>
+    {% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
+{% block body %}
+<form>
+        <div class="alert d-none text-center" ></div>
+
+    <div class="text-center">
+        <h1 class="h3 mb-3 fw-bold ">Connexion</h1>
+    </div>
+
+    <div class="position-relative mb-4 blocEmail">
+        <label for="validationTooltipEmail" class="form-label">Adresse email </label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="validationTooltipEmailPrepend"><i class="fa-solid fa-envelope"></i></span>
+            <input type="email" name="email" id="inputEmail" class="email form-control" placeholder= 'Exemple@domaine.com' autofocus>
+            <div class="invalid-tooltip">
+                Veuillez entrer une adresse email valide
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-lg btn-primary btnEmail" >
+                Valider votre email
+            </button>
+        </div>
+    </div>
+
+    <div class="webcam-container text-center d-none ">
+        <div class="video-container my-4">
+            <video class="webcam" autoplay muted playsinline></video>
+        </div>
+        <button class="btn btn-info startWebcam">Démarrer la webcam</button>
+        <button class="btn btn-success startFacialReco">Identifier</button>
+    </div>
+
+
+
+
+    <div class="position-relative mb-4 d-none blocPassword">
+        <label for="validationTooltipPass" class="form-label">Mot de passe * </label>
+        <div class="input-group has-validation">
+            <span class="input-group-text" id="validationTooltipPassPrepend"><i class="fa-solid fa-lock"></i></span>
+            <input type="password" name="password" id="inputPassword" class="password form-control">
+            <div class="invalid-tooltip">
+                Veuillez entrer un mot de passe (entre 8 et 128 caractères)
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-lg btn-primary btnConnect" >
+                Se connecter
+            </button>
+        </div>
+    </div>
+
+
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+
+
+</form>
+{% endblock %}

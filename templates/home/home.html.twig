@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facial Recognition | Accueil{% endblock %}
+
+{% block body %}
+<h1 class="text-primary text-center m-5 display-4 fw-bold">Authentification par reconnaissance faciale</h1>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="text-center">
+            <p class="display-3">Bonjour {{ app.user.username }}</p>
+        </div>
+    {% else %}
+        <div class="text-center">
+            <a class="btn btn-info" href="{{ path('app_register') }}">Créer un compte</a>
+            <a class="btn btn-info" href="{{ path('app_login') }}">Se connecter</a>
+        </div>
+    {% endif %}
+{% endblock %}
