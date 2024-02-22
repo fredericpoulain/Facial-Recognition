@@ -2,8 +2,9 @@
 
 This project is a web application that allows users to authenticate themselves using their face and password. It employs
 facial recognition technique through [face-api.js](https://github.com/justadudewhohacks/face-api.js) based on
-descriptors, which are arrays of 128 floating-point numbers
-representing facial features. Additionally, it utilizes a session token security system, ensuring user authenticity.
+descriptors, which are arrays of 128 floating-point numbers representing facial features.
+**No image files are stored on the server**, only the image descriptor.
+Additionally, it utilizes a session token security system, ensuring user authenticity.
 
 ## **Technologies Used**
 
@@ -34,7 +35,7 @@ database. You also need to have a modern web browser that supports webcam usage.
   server creates a session token and sends it to the client. You will then need to enter your password to complete the
   login. The client's token is sent to the server, which compares it with the session token. I
 
-f both tokens match, authentication is successful.
+If both tokens match, authentication is successful.
 
 ## **Settings**
 
@@ -53,7 +54,6 @@ For example, if you want to make recognition slightly more tolerant, you can inc
 `const THRESHOLD = 0.5;`
 
 ### Expression and Gender Recognition
-
 
 * #### Add Models on Load
 
