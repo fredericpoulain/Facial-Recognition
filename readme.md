@@ -25,7 +25,7 @@ database. You also need to have a modern web browser that supports webcam usage.
 * Create a MySQL database and import the **database.sql** file located in the **sql** folder.
 * Modify the `.env` file located at the root of the project and provide the connection information for your database.
 * Run the command `composer install` to install PHP dependencies.
-* Run the command `symfony server -d` to start the web server.
+* Run the command `php -S localhost:8000 -t public` to start the web server (or `symfony serve -d` but symfony cli is required).
 * Open your web browser and access the project's URL.
 
 ## **Usage**
