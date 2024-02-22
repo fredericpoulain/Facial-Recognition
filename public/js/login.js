@@ -137,15 +137,27 @@ function startDetection() {
     const faceDetection = setInterval(async () => {
         //ici, on peut éventuellement ajouter la reconnaissance des expressions faciale, et celle du genre
         const detections = await faceapi.detectAllFaces(webcamElement, new faceapi.TinyFaceDetectorOptions())
-            .withFaceLandmarks(true);
-        // .withFaceExpressions()
-        // .withAgeAndGender();
+            .withFaceLandmarks(true)
+            // .withFaceExpressions()
+            // .withAgeAndGender();
         const resizedDetections = faceapi.resizeResults(detections, displaySize);
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         faceapi.draw.drawDetections(canvas, resizedDetections);
         faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+
+        // faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
+        // resizedDetections.forEach(result => {
+        //     const { age, gender, genderProbability } = result
+        //     new faceapi.draw.DrawTextField(
+        //         [
+        //             `${Math.round(age, 0)} years`,
+        //             `${gender} (${Math.round(genderProbability)})`
+        //         ],
+        //         result.detection.box.bottomRight
+        //     ).draw(canvas)
+        // })
 
     }, 300);
 }
