@@ -9,7 +9,7 @@ button:disabled {
     background: gray;
     cursor: not-allowed;
 }
-.webcam-container {
+.webcam-container{
     padding: 0;
 
 }
