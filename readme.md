@@ -24,6 +24,7 @@ database. You also need to have a modern web browser that supports webcam usage.
 * Clone or download this repository to your web server.
 * Create a MySQL database and import the **database.sql** file located in the **sql** folder.
 * Modify the `.env` file located at the root of the project and provide the connection information for your database.
+  `DATABASE_URL="mysql://root:@127.0.0.1:3306/DATABASE_NAME?serverVersion=mariadb-10.4.32&charset=utf8mb4"`
 * Run the command `composer install` to install PHP dependencies.
 * Run the command `php -S localhost:8000 -t public` to start the web server (or `symfony serve -d` but symfony cli is required).
 * Open your web browser and access the project's URL.
