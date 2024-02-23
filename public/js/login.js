@@ -102,10 +102,10 @@ function faceRecognition(stream) {
             faceapi.nets.faceLandmark68TinyNet.load(modelPath),
 
             // //faceExpressionNet : reconnaissance des expressions faciales
-            // faceapi.nets.faceExpressionNet.load(modelPath),
+            faceapi.nets.faceExpressionNet.load(modelPath),
 
             // // ageGenderNet : estimation de l’âge et du genre
-            // faceapi.nets.ageGenderNet.load(modelPath)
+            faceapi.nets.ageGenderNet.load(modelPath)
         ];
         await Promise.all(promises); //on attend que tous les models soient chargés
         createCanvas(); //On crée le canvas
@@ -138,8 +138,8 @@ function startDetection() {
         //ici, on peut éventuellement ajouter la reconnaissance des expressions faciale, et celle du genre
         const detections = await faceapi.detectAllFaces(webcamElement, new faceapi.TinyFaceDetectorOptions())
             .withFaceLandmarks(true)
-            // .withFaceExpressions()
-            // .withAgeAndGender();
+            .withFaceExpressions()
+            .withAgeAndGender();
         const resizedDetections = faceapi.resizeResults(detections, displaySize);
         const ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -147,17 +147,17 @@ function startDetection() {
         faceapi.draw.drawDetections(canvas, resizedDetections);
         faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
 
-        // faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-        // resizedDetections.forEach(result => {
-        //     const { age, gender, genderProbability } = result
-        //     new faceapi.draw.DrawTextField(
-        //         [
-        //             `${Math.round(age, 0)} years`,
-        //             `${gender} (${Math.round(genderProbability)})`
-        //         ],
-        //         result.detection.box.bottomRight
-        //     ).draw(canvas)
-        // })
+        faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
+        resizedDetections.forEach(result => {
+            const { age, gender, genderProbability } = result
+            new faceapi.draw.DrawTextField(
+                [
+                    `${Math.round(age, 0)} years`,
+                    `${gender} (${Math.round(genderProbability)})`
+                ],
+                result.detection.box.bottomRight
+            ).draw(canvas)
+        })
 
     }, 300);
 }

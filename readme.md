@@ -4,7 +4,7 @@ This project is a web application that allows users to authenticate themselves u
 facial recognition technique through [face-api.js](https://github.com/justadudewhohacks/face-api.js) based on
 descriptors, which are arrays of 128 floating-point numbers representing facial features.
 **No image files are stored on the server**, only the image descriptor.
-Additionally, it utilizes a session token security system, ensuring user authenticity.
+Additionally, it uses a session token security system, ensuring that password entry occurs after facial recognition.
 
 ![screenshot](screenshot.jpg)
 
